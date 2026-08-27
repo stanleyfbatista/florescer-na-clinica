@@ -125,7 +125,24 @@ export function NovaSalesPage() {
     <section className="nova-section nova-about" id="mentora">
       <div className="nova-container nova-about-grid">
         <div className="about-image" data-reveal="left"><img src="/beatriz-jardim-mentora.jpeg" alt="Beatriz, mentora do Florescer na Clínica" /></div>
-        <div data-reveal="right"><p className="nova-kicker">Sua guia nessa jornada</p><h2>Quem vai te guiar por essa transformação.</h2><div className="placeholder-note"><b>Biografia em preparação</b><p>Formação, tempo de atuação e trajetória profissional serão adicionados após confirmação.</p></div><p className="about-copy">O que você pode saber desde já: Beatriz vive o que ensina. Ela tomou decisões que permitiram cuidar da família, dos filhos e viver da psicologia. Não em teoria, mas no dia a dia. O Método Jardim nasceu da experiência real de construir um consultório sustentável. Não veio de uma fórmula teórica desconectada da realidade clínica.</p></div>
+        <div data-reveal="right">
+          <p className="nova-kicker">Sua guia nessa jornada</p>
+          <h2>Quem vai te guiar por essa transformação.</h2>
+          <div className="about-copy">
+            <p><strong>Beatriz Jardim é psicóloga, mentora e fundadora da Clínica Jardim, Psicologia &amp; Saúde.</strong></p>
+            <p>Sua trajetória começou como a de tantas psicólogas: atendendo, aprendendo na prática e tentando descobrir como transformar a clínica em uma carreira que fosse, ao mesmo tempo, próspera e sustentável.</p>
+            <p>Ao longo dos anos, construiu a Clínica Jardim, que hoje conta com <strong>três unidades e uma comunidade de mais de 100 profissionais</strong>, além de desenvolver projetos, mentorias e formações para psicólogos.</p>
+            <p>E foi justamente nessa trajetória que nasceu grande parte do que hoje ensina.</p>
+            <p>Beatriz aprendeu a partir da própria experiência como psicóloga clínica, mas também do outro lado da clínica: na gestão. Ao longo dos anos, acompanhou de perto a trajetória de centenas de psicólogos, observando diferentes momentos de carreira, dificuldades, escolhas e formas de conduzir a clínica.</p>
+            <p>Isso permitiu enxergar, na prática, o que funciona, o que não funciona e quais decisões realmente fazem diferença para construir uma carreira sustentável na psicologia.</p>
+            <p><strong>Mas talvez a parte mais importante dessa história não esteja nos números.</strong></p>
+            <p>Beatriz construiu sua carreira enquanto construía também uma família. É esposa, mãe de dois filhos e acredita que prosperar profissionalmente não deveria exigir abrir mão da própria vida.</p>
+            <p>Foi aprendendo a organizar processos, tomar decisões, delegar, compreender os números e deixar de depender exclusivamente das próprias horas de atendimento que ela conquistou algo que hoje considera tão importante quanto o crescimento financeiro: autonomia sobre o próprio tempo.</p>
+            <p>O Método Jardim nasceu da união de todas essas experiências.</p>
+            <p>Não de uma fórmula pronta ou de uma teoria distante da realidade, mas da vivência clínica, da gestão de uma clínica em crescimento e de anos acompanhando de perto diferentes trajetórias profissionais.</p>
+            <p className="about-closing"><strong>Hoje, Beatriz ensina o caminho que gostaria de ter conhecido quando começou.</strong></p>
+          </div>
+        </div>
       </div>
     </section>
 

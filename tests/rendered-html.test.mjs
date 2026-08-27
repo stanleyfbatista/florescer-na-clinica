@@ -52,6 +52,8 @@ test("renders the new static sales page with the confirmed offer", async () => {
   assert.match(html, /href="#publico"/);
   assert.match(html, /depoimento-florescer-01\.jpeg/);
   assert.doesNotMatch(html, /Depoimento em vídeo/);
+  assert.match(html, /três unidades e uma comunidade de mais de 100 profissionais/);
+  assert.doesNotMatch(html, /Biografia em preparação/);
   assert.doesNotMatch(html, /—/);
 });
 
