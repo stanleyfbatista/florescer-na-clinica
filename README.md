@@ -24,7 +24,9 @@ npm run export:static
 ```
 
 O comando gera a pasta `deploy/`, pronta para publicação em
-`www.beatrizjardim.com.br`. A página é publicada na raiz e também em `/nova/`.
+`www.beatrizjardim.com.br`. A página do curso fica disponível exclusivamente em
+`/florescer-na-clinica/`, enquanto a raiz permanece reservada para o futuro site
+institucional da Beatriz.
 
 ## Publicação pela Turbo Cloud
 

@@ -3,4 +3,6 @@ deployment:
   tasks:
     - export DEPLOYPATH=$HOME/public_html/
     - /bin/mkdir -p $DEPLOYPATH
+    - /bin/rm -rf $DEPLOYPATH/assets $DEPLOYPATH/nova
+    - /bin/rm -f $DEPLOYPATH/beatriz-jardim-hero.png $DEPLOYPATH/beatriz-jardim-mentora.jpeg $DEPLOYPATH/beatriz-referencia.png $DEPLOYPATH/depoimento-florescer-01.jpeg $DEPLOYPATH/depoimento-florescer-02.jpeg $DEPLOYPATH/depoimento-florescer-03.jpeg $DEPLOYPATH/depoimento-florescer-04.jpeg $DEPLOYPATH/depoimento-florescer-05.jpeg $DEPLOYPATH/florescer-logo-centralizado.svg $DEPLOYPATH/florescer-logo-horizontal.svg $DEPLOYPATH/mockup-florescer-transparente.png $DEPLOYPATH/pagamentos.svg
     - /bin/cp -R deploy/. $DEPLOYPATH
