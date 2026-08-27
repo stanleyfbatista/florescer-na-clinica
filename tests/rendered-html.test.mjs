@@ -38,7 +38,8 @@ test("renders the new static sales page with the confirmed offer", async () => {
   const html = await response.text();
 
   assert.match(html, /Você pode <em>viver bem da clínica<\/em> e ser dona do seu próprio tempo/);
-  assert.match(html, /A raiz do problema não é a sua agenda/);
+  assert.match(html, /Você pode viver bem da clínica\. E ser dona do seu próprio tempo/);
+  assert.match(html, /É esse caminho que ensinamos no Método Jardim/);
   assert.match(html, /12x de/);
   assert.match(html, /R\$ 61,74/);
   assert.match(html, /R\$ 597,00 à vista/);

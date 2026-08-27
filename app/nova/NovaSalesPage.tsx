@@ -95,20 +95,22 @@ export function NovaSalesPage() {
 
     <section className="nova-section nova-pain" id="dor">
       <div className="nova-reading" data-reveal="up">
-        <p className="nova-kicker">A raiz do problema</p>
-        <h2>A raiz do problema não é a sua agenda. É a forma como você aprendeu a crescer na clínica.</h2>
+        <p className="nova-kicker">Uma nova forma de prosperar</p>
+        <h2>Você pode viver bem da clínica. E ser dona do seu próprio tempo.</h2>
         <div className="nova-copy">
-          <p>Na graduação, você aprendeu a ser psicóloga.</p>
-          <p>Aprendeu sobre técnica, ética, teoria e atendimento. Mas ninguém te ensinou a construir uma clínica que fosse, além de uma vocação, uma carreira próspera e sustentável.</p>
-          <p>E quando ninguém ensina outro caminho, crescer parece significar uma coisa: atender mais.</p>
-          <blockquote>Mais pacientes. Mais horários. Mais dias ocupados.</blockquote>
-          <p>O faturamento pode até aumentar, mas o seu tempo diminui. E, em algum momento, você percebe que criou uma carreira que depende inteiramente da sua presença para continuar funcionando.</p>
-          <p>É por isso que uma agenda cheia nem sempre significa uma clínica próspera.</p>
-          <p><strong>Prosperidade exige estrutura.</strong></p>
-          <p>Estrutura para entender seus números, precificar seu trabalho, organizar sua rotina, criar processos, tomar decisões estratégicas e fazer a clínica crescer sem precisar ocupar cada vez mais horas da sua vida.</p>
-          <p>Não falta capacidade.<br/>Não falta dedicação.<br/>E provavelmente não falta trabalho.</p>
-          <p>Falta aprender aquilo que ninguém te ensinou sobre viver bem da clínica.</p>
-          <p className="nova-closing-line">Todo jardim precisa de estrutura para florescer. E a sua clínica também.</p>
+          <p>Construir uma carreira próspera na psicologia não precisa significar uma agenda cada vez mais cheia, jornadas intermináveis ou uma clínica que dependa de você para tudo.</p>
+          <p>É possível ganhar bem, ter uma clínica organizada e construir uma rotina que também comporte a sua vida.</p>
+          <p><strong>Porque prosperar na clínica não é simplesmente atender mais.</strong></p>
+          <blockquote>É fazer escolhas mais estratégicas.<br/>É entender seus números.<br/>É valorizar o seu trabalho.<br/>É organizar processos.<br/>É construir uma estrutura que não dependa exclusivamente das suas horas disponíveis.</blockquote>
+          <p>No fim, não se trata apenas de quanto a sua clínica fatura. Trata-se também da vida que ela permite que você viva.</p>
+          <p>Talvez hoje você já tenha pacientes. Talvez sua agenda esteja até cheia.</p>
+          <p>Mas, ainda assim, existe aquela sensação de que você trabalha muito para o quanto realmente avança.</p>
+          <p>Entre atendimentos, mensagens, prontuários, organização financeira e decisões administrativas, a clínica vai ocupando todos os espaços, e o crescimento parece sempre exigir mais de você.</p>
+          <blockquote>Mais pacientes.<br/>Mais horários.<br/>Mais trabalho.</blockquote>
+          <p><strong>Mas não precisa ser assim.</strong></p>
+          <p>Existe um momento em que, para continuar crescendo, você precisa parar de pensar apenas como psicóloga dentro da clínica e começar a aprender a construir a clínica que deseja ter.</p>
+          <p>Uma clínica que seja sustentável financeiramente, organizada e coerente com a vida que você quer construir.</p>
+          <p className="nova-closing-line">É esse caminho que ensinamos no Método Jardim.</p>
         </div>
       </div>
     </section>
