@@ -48,6 +48,7 @@ test("renders the new static sales page with the confirmed offer", async () => {
   assert.match(html, /https:\/\/pay\.kiwify\.com\.br\/iXQjQT1/);
   assert.match(html, /nova-marquee/);
   assert.match(html, /payment-methods/);
+  assert.match(html, /mockup-florescer-transparente\.png/);
   assert.match(html, /nova-guarantee-section/);
   assert.match(html, /href="#provas"/);
   assert.match(html, /href="#mentora"/);
