@@ -47,6 +47,9 @@ test("renders the new static sales page with the confirmed offer", async () => {
   assert.match(html, /Você tem 7 dias para conhecer a formação com tranquilidade/);
   assert.match(html, /1 ano de acesso/);
   assert.match(html, /https:\/\/pay\.kiwify\.com\.br\/iXQjQT1/);
+  assert.match(html, /connect\.facebook\.net\/en_US\/fbevents\.js/);
+  assert.match(html, /fbq\('init','764159417596803'\)/);
+  assert.match(html, /facebook\.com\/tr\?id=764159417596803&amp;ev=PageView/);
   assert.match(html, /nova-marquee/);
   assert.match(html, /payment-methods/);
   assert.match(html, /mockup-florescer-transparente\.webp/);
