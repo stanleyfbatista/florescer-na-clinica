@@ -47,9 +47,9 @@ test("renders the new static sales page with the confirmed offer", async () => {
   assert.match(html, /nova-marquee/);
   assert.match(html, /payment-methods/);
   assert.match(html, /nova-guarantee-section/);
-  assert.match(html, /href="#dor"/);
-  assert.match(html, /href="#mentora"/);
   assert.match(html, /href="#provas"/);
+  assert.match(html, /href="#mentora"/);
+  assert.match(html, /href="#publico"/);
   assert.match(html, /depoimento-florescer-01\.jpeg/);
   assert.doesNotMatch(html, /Depoimento em vídeo/);
   assert.doesNotMatch(html, /—/);

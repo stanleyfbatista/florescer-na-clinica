@@ -73,7 +73,7 @@ export function NovaSalesPage() {
         <div className="nova-hero-copy" data-reveal="left">
           <h1>Você pode <em>viver bem da clínica</em> e ser dona do seu próprio tempo.</h1>
           <p className="nova-lead">Um caminho para construir uma clínica próspera, sustentável e que trabalhe a favor da vida que você deseja viver.</p>
-          <Button href="#dor">Quero conhecer o Método Jardim</Button>
+          <Button href="#provas">Quero conhecer o Método Jardim</Button>
           <p className="nova-support">Uma formação para transformar vocação em uma carreira sustentável.</p>
         </div>
         <div className="nova-portrait-wrap" data-reveal="right">
@@ -83,6 +83,13 @@ export function NovaSalesPage() {
     </header>
 
     <Marquee />
+
+    <section className="nova-section nova-proof" id="provas">
+      <div className="nova-container">
+        <div className="proof-heading" data-reveal="up"><p className="nova-kicker">Transformações reais</p><h2>Quem já está florescendo na própria trajetória profissional.</h2><p>Relatos reais de psicólogas que estão vivendo a experiência do Florescer na Clínica.</p></div>
+        <div className="proof-grid">{testimonials.map(([src,alt],index) => <figure data-reveal={index === 0 ? "left" : index === 2 ? "right" : "up"} key={src}><img src={src} alt={alt} loading="lazy"/><figcaption>Depoimento real de aluna do Florescer na Clínica</figcaption></figure>)}</div>
+      </div>
+    </section>
 
     <section className="nova-section nova-pain" id="dor">
       <div className="nova-reading" data-reveal="up">
@@ -130,18 +137,11 @@ export function NovaSalesPage() {
         <div className="modules-grid">{modules.map(([number,title,text], index) => <article className="module-card" data-reveal={index % 2 ? "right" : "left"} key={title}><span>{number}</span><h3>{title}</h3><p>{text}</p>{number === "III" && <small>Coinstrutor: nome e credenciais em confirmação.</small>}</article>)}</div>
         <div className="masterclass-head" data-reveal="up"><p className="nova-kicker">Conteúdo complementar</p><h3>Masterclasses bônus</h3></div>
         <div className="master-grid">{masterclasses.map(([number,title,text], index) => <article data-reveal={index % 2 ? "up" : "left"} key={title}><span>{number}</span><div><h4>{title}</h4><p>{text}</p></div></article>)}</div>
-        <div className="center-button" data-reveal="up"><Button href="#provas">Quero acessar a formação completa</Button></div>
+        <div className="center-button" data-reveal="up"><Button href="#publico">Quero acessar a formação completa</Button></div>
       </div>
     </section>
 
-    <section className="nova-section nova-proof" id="provas">
-      <div className="nova-container">
-        <div className="proof-heading" data-reveal="up"><p className="nova-kicker">Transformações reais</p><h2>Quem já está florescendo na própria trajetória profissional.</h2><p>Relatos reais de psicólogas que estão vivendo a experiência do Florescer na Clínica.</p></div>
-        <div className="proof-grid">{testimonials.map(([src,alt],index) => <figure data-reveal={index === 0 ? "left" : index === 2 ? "right" : "up"} key={src}><img src={src} alt={alt} loading="lazy"/><figcaption>Depoimento real de aluna do Florescer na Clínica</figcaption></figure>)}</div>
-      </div>
-    </section>
-
-    <section className="nova-section nova-audience">
+    <section className="nova-section nova-audience" id="publico">
       <div className="nova-container"><div className="audience-title" data-reveal="up"><p className="nova-kicker">Uma escolha honesta</p><h2>O Florescer na Clínica é para você? Seja honesta com a sua resposta.</h2></div>
         <div className="audience-grid"><article data-reveal="left"><span className="decision-label">É para você se</span><ul>{["Você já atende clinicamente e quer estruturar o consultório como negócio","Vive a jornada dupla ou sente que precisa sair dela","Trabalha muito, mas percebe pouca margem financeira real","Sente que o consultório depende 100% da sua presença","Quer estruturar a clínica sem perder o sentido do trabalho","Busca clareza, autonomia, sustentabilidade e espaço para a vida pessoal"].map(item => <li key={item}><b>✓</b>{item}</li>)}</ul></article><article className="not-for" data-reveal="right"><span className="decision-label">Não é para você se</span><ul>{["Você ainda não concluiu a formação em psicologia","Nunca atendeu e procura formação clínica inicial","Busca uma fórmula mágica sem colocar decisões em prática","Não está disposta a repensar a forma como enxerga o próprio consultório"].map(item => <li key={item}><b>×</b>{item}</li>)}</ul></article></div>
       </div>
