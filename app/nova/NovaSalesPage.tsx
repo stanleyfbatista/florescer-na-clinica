@@ -32,11 +32,11 @@ const included = [
 ];
 
 const testimonials = [
-  ["/depoimento-florescer-01.webp", "Depoimento de aluna sobre como o curso ajudou no desenvolvimento profissional", 1242, 1229],
-  ["/depoimento-florescer-02.webp", "Depoimento de aluna sobre os módulos e a continuidade da mentoria", 739, 1600],
-  ["/depoimento-florescer-03.webp", "Depoimento de aluna sobre carreira, escolhas e posicionamento", 739, 1600],
+  ["/depoimento-florescer-01.webp", "Depoimento de aluna sobre como o curso ajudou no desenvolvimento profissional", 1242, 610],
+  ["/depoimento-florescer-02.webp", "Depoimento de aluna sobre os módulos e a continuidade da mentoria", 739, 590],
+  ["/depoimento-florescer-03.webp", "Depoimento de aluna sobre carreira, escolhas e posicionamento", 739, 700],
   ["/depoimento-florescer-04.webp", "Depoimento de aluna sobre a aplicação prática e os bastidores da psicologia clínica", 1242, 641],
-  ["/depoimento-florescer-05.webp", "Depoimento de Cristiane Pereira sobre acolhimento e direcionamento profissional", 591, 1280],
+  ["/depoimento-florescer-05.webp", "Depoimento de aluna sobre acolhimento e direcionamento profissional", 591, 660],
 ];
 
 const faqs = [
@@ -131,7 +131,7 @@ export function NovaSalesPage() {
         <div className="about-image" data-reveal="left"><img src="/beatriz-jardim-mentora.webp" alt="Beatriz, mentora do Florescer na Clínica" width="792" height="1200" loading="lazy" decoding="async" /></div>
         <div data-reveal="right">
           <p className="nova-kicker">Sua guia nessa jornada</p>
-          <h2>Quem é Beatriz Jardim.</h2>
+          <h2>Quem é Beatriz Jardim</h2>
           <div className="about-copy">
             <p><strong>Beatriz é psicóloga e fundadora da Clínica Jardim, hoje com três unidades e mais de 100 profissionais atendendo.</strong></p>
             <p>Ela começou como a maioria das psicólogas começa: atendendo, aprendendo na prática e sem ninguém pra explicar como a clínica vira carreira. Ninguém ensina isso na graduação.</p>
