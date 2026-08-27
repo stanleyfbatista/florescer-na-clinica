@@ -40,7 +40,9 @@ test("renders the new static sales page with the confirmed offer", async () => {
   assert.match(html, /Você pode <em>viver bem da clínica<\/em> e ser dona do seu próprio tempo/);
   assert.match(html, /A raiz do problema não é a sua agenda/);
   assert.match(html, /12x de/);
-  assert.match(html, /R\$ 82,43/);
+  assert.match(html, /R\$ 61,74/);
+  assert.match(html, /R\$ 597,00 à vista/);
+  assert.match(html, /R\$ 797,00/);
   assert.match(html, /Você tem 7 dias para conhecer a formação com tranquilidade/);
   assert.match(html, /1 ano de acesso/);
   assert.match(html, /https:\/\/pay\.kiwify\.com\.br\/iXQjQT1/);
