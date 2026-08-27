@@ -32,11 +32,11 @@ const included = [
 ];
 
 const testimonials = [
-  ["/depoimento-florescer-01.jpeg", "Depoimento de aluna sobre como o curso ajudou no desenvolvimento profissional"],
-  ["/depoimento-florescer-02.jpeg", "Depoimento de aluna sobre os módulos e a continuidade da mentoria"],
-  ["/depoimento-florescer-03.jpeg", "Depoimento de aluna sobre carreira, escolhas e posicionamento"],
-  ["/depoimento-florescer-04.jpeg", "Depoimento de aluna sobre a aplicação prática e os bastidores da psicologia clínica"],
-  ["/depoimento-florescer-05.jpeg", "Depoimento de Cristiane Pereira sobre acolhimento e direcionamento profissional"],
+  ["/depoimento-florescer-01.webp", "Depoimento de aluna sobre como o curso ajudou no desenvolvimento profissional", 1242, 1229],
+  ["/depoimento-florescer-02.webp", "Depoimento de aluna sobre os módulos e a continuidade da mentoria", 739, 1600],
+  ["/depoimento-florescer-03.webp", "Depoimento de aluna sobre carreira, escolhas e posicionamento", 739, 1600],
+  ["/depoimento-florescer-04.webp", "Depoimento de aluna sobre a aplicação prática e os bastidores da psicologia clínica", 1242, 641],
+  ["/depoimento-florescer-05.webp", "Depoimento de Cristiane Pereira sobre acolhimento e direcionamento profissional", 591, 1280],
 ];
 
 const faqs = [
@@ -78,8 +78,8 @@ export function NovaSalesPage() {
           <Button href="#provas">Quero conhecer o Método Jardim</Button>
           <p className="nova-support">Uma formação para transformar vocação em uma carreira sustentável.</p>
         </div>
-        <div className="nova-portrait-wrap" data-reveal="right">
-          <img className="nova-portrait" src="/beatriz-jardim-hero.png" alt="Beatriz na identidade visual do Florescer na Clínica" />
+        <div className="nova-portrait-wrap">
+          <img className="nova-portrait" src="/beatriz-jardim-hero.webp" alt="Beatriz na identidade visual do Florescer na Clínica" width="900" height="1007" fetchPriority="high" decoding="async" />
         </div>
       </div>
     </header>
@@ -89,7 +89,7 @@ export function NovaSalesPage() {
     <section className="nova-section nova-proof" id="provas">
       <div className="nova-container">
         <div className="proof-heading" data-reveal="up"><p className="nova-kicker">Transformações reais</p><h2>Quem já está florescendo na própria trajetória profissional.</h2><p>Relatos reais de psicólogas que estão vivendo a experiência do Florescer na Clínica.</p></div>
-        <div className="proof-grid">{testimonials.map(([src,alt],index) => <figure data-reveal={index === 0 ? "left" : index === 2 ? "right" : "up"} key={src}><img src={src} alt={alt} loading="lazy"/><figcaption>Depoimento real de aluna do Florescer na Clínica</figcaption></figure>)}</div>
+        <div className="proof-grid">{testimonials.map(([src,alt,width,height],index) => <figure data-reveal={index === 0 ? "left" : index === 2 ? "right" : "up"} key={src}><img src={String(src)} alt={String(alt)} width={Number(width)} height={Number(height)} loading="lazy" decoding="async"/><figcaption>Depoimento real de aluna do Florescer na Clínica</figcaption></figure>)}</div>
       </div>
     </section>
 
@@ -126,7 +126,7 @@ export function NovaSalesPage() {
 
     <section className="nova-section nova-about" id="mentora">
       <div className="nova-container nova-about-grid">
-        <div className="about-image" data-reveal="left"><img src="/beatriz-jardim-mentora.jpeg" alt="Beatriz, mentora do Florescer na Clínica" /></div>
+        <div className="about-image" data-reveal="left"><img src="/beatriz-jardim-mentora.webp" alt="Beatriz, mentora do Florescer na Clínica" width="792" height="1200" loading="lazy" decoding="async" /></div>
         <div data-reveal="right">
           <p className="nova-kicker">Sua guia nessa jornada</p>
           <h2>Quem é Beatriz Jardim.</h2>
@@ -162,7 +162,7 @@ export function NovaSalesPage() {
     <section className="nova-section nova-offer" id="oferta">
       <div className="offer-rings" aria-hidden="true"></div>
       <div className="nova-container"><div className="offer-heading offer-heading-centered" data-reveal="up"><p className="nova-kicker light">Tudo o que você vai receber hoje!</p><h2>Sua clínica pode sustentar o seu trabalho e a vida que você quer viver!</h2></div>
-        <figure className="offer-mockup offer-mockup-wide" data-reveal="up"><img src="/mockup-florescer-transparente.png" alt="Formação Florescer na Clínica disponível no computador, tablet e celular" loading="lazy"/></figure>
+        <figure className="offer-mockup offer-mockup-wide" data-reveal="up"><img src="/mockup-florescer-transparente.webp" alt="Formação Florescer na Clínica disponível no computador, tablet e celular" width="1397" height="839" loading="lazy" decoding="async"/></figure>
         <div className="offer-stack offer-stack-columns" data-reveal="up">{included.map(([item,description]) => <article key={item}><span>✓</span><div><h3>{item}</h3><p>{description}</p></div></article>)}</div>
         <aside className="checkout-card offer-checkout" data-reveal="up"><p>Florescer na Clínica</p><div className="offer-anchor"><span>Valor completo <s>R$ 797,00</s></span><strong>Condição especial de abertura</strong></div><div className="installment-label">12x de</div><div className="installment-price"><small>R$</small><strong>61</strong><sup>,74</sup></div><div className="cash-price">ou R$ 597,00 à vista</div><ul><li><span>✓</span>4 módulos fundamentais</li><li><span>✓</span>5 masterclasses bônus</li><li><span>✓</span>1 ano de acesso</li></ul><Button href={checkout} checkoutLink>Quero estruturar minha clínica agora</Button><small>Compra segura pela Kiwify</small><div className="payment-methods" role="img" aria-label="Meios de pagamento aceitos"></div></aside>
       </div>

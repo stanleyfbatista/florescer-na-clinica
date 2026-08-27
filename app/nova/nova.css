@@ -21,3 +21,4 @@
 @media(max-width:650px){.offer-content-grid{gap:24px}.offer-mockup{margin-inline:-10px}.offer-mockup-wide{margin:0 auto 22px}.offer-stack-columns{grid-template-columns:1fr}.offer-checkout{margin-top:38px}}
 @media(prefers-reduced-motion:reduce){.nova-page *,.nova-page *:before,.nova-page *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}[data-reveal]{opacity:1;transform:none}.nova-marquee>div{animation:none}}
 .nova-page :focus-visible{outline:2px solid var(--leaf);outline-offset:4px}
+.nova-portrait{aspect-ratio:900/1007}

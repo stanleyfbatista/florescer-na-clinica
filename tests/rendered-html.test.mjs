@@ -48,14 +48,14 @@ test("renders the new static sales page with the confirmed offer", async () => {
   assert.match(html, /https:\/\/pay\.kiwify\.com\.br\/iXQjQT1/);
   assert.match(html, /nova-marquee/);
   assert.match(html, /payment-methods/);
-  assert.match(html, /mockup-florescer-transparente\.png/);
+  assert.match(html, /mockup-florescer-transparente\.webp/);
   assert.match(html, /nova-guarantee-section/);
   assert.match(html, /href="#provas"/);
   assert.match(html, /href="#mentora"/);
   assert.match(html, /href="#publico"/);
-  assert.match(html, /depoimento-florescer-01\.jpeg/);
-  assert.match(html, /depoimento-florescer-04\.jpeg/);
-  assert.match(html, /depoimento-florescer-05\.jpeg/);
+  assert.match(html, /depoimento-florescer-01\.webp/);
+  assert.match(html, /depoimento-florescer-04\.webp/);
+  assert.match(html, /depoimento-florescer-05\.webp/);
   assert.doesNotMatch(html, /Depoimento em vídeo/);
   assert.match(html, /três unidades e mais de 100 profissionais atendendo/);
   assert.doesNotMatch(html, /Biografia em preparação/);

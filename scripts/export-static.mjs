@@ -32,6 +32,9 @@ let html = await response.text();
 
 html = html
   .replace(/<link\b[^>]*\brel=["']modulepreload["'][^>]*\/?\s*>/gi, "")
+  .replace(/<link\b(?=[^>]*\brel=["']preload["'])(?=[^>]*\bas=["']font["'])[^>]*\/?\s*>/gi, "")
+  .replace(/<img class="final-logo" src="\/florescer-logo-centralizado\.svg" alt="Florescer na Clínica"\/>/g, '<img class="final-logo" src="/florescer-logo-centralizado.svg" alt="Florescer na Clínica" width="1462" height="550" loading="lazy" decoding="async"/>')
+  .replace(/<img src="\/florescer-logo-centralizado\.svg" alt="Florescer na Clínica"\/>/g, '<img src="/florescer-logo-centralizado.svg" alt="Florescer na Clínica" width="1462" height="550" loading="lazy" decoding="async"/>')
   .replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (script, attributes, body) => {
     const isRuntime = /\btype=["']module["']/i.test(attributes) || /\bsrc=["']\/assets\/[^"']+\.js/i.test(attributes) || body.includes("__VINEXT_") || /import\(["']\/assets\//.test(body);
     return isRuntime ? "" : script;
@@ -77,8 +80,14 @@ Options -Indexes
   ExpiresActive On
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\\.(?:css|js|jpe?g|png|webp|svg|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
 </IfModule>
 `, "utf8");
 
