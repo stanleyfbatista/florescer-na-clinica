@@ -37,7 +37,8 @@ test("renders the new static sales page with the confirmed offer", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
 
-  assert.match(html, /A verdade que ninguém te conta sobre ter a agenda cheia/);
+  assert.match(html, /Você pode <em>viver bem da clínica<\/em> e ser dona do seu próprio tempo/);
+  assert.match(html, /A raiz do problema não é a sua agenda/);
   assert.match(html, /12x de/);
   assert.match(html, /R\$ 82,43/);
   assert.match(html, /Você tem 7 dias para conhecer a formação com tranquilidade/);
@@ -49,6 +50,8 @@ test("renders the new static sales page with the confirmed offer", async () => {
   assert.match(html, /href="#dor"/);
   assert.match(html, /href="#mentora"/);
   assert.match(html, /href="#provas"/);
+  assert.match(html, /depoimento-florescer-01\.jpeg/);
+  assert.doesNotMatch(html, /Depoimento em vídeo/);
   assert.doesNotMatch(html, /—/);
 });
 

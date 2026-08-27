@@ -31,6 +31,12 @@ const included = [
   ["Masterclass: Bastidores da clínica", "O que acontece atrás de um consultório que funciona"],
 ];
 
+const testimonials = [
+  ["/depoimento-florescer-01.jpeg", "Depoimento de aluna sobre como o curso ajudou no desenvolvimento profissional"],
+  ["/depoimento-florescer-02.jpeg", "Depoimento de aluna sobre os módulos e a continuidade da mentoria"],
+  ["/depoimento-florescer-03.jpeg", "Depoimento de aluna sobre carreira, escolhas e posicionamento"],
+];
+
 const faqs = [
   ["Eu atendo por convênio. Esse curso serve para mim?", "Sim. O Florescer na Clínica não depende do modelo de atendimento que você utiliza. A Filosofia Jardim trabalha a estrutura do consultório como um todo: organização, mentalidade, posicionamento e gestão. Os princípios se aplicam à sua clínica, seja no atendimento particular, por convênio ou em ambos."],
   ["Eu tenho pouco tempo. Dá para fazer no meu ritmo?", "Sim. Você tem 1 ano de acesso a todo o conteúdo. A formação foi pensada para ser consumida no seu ritmo, sem pressão. Cada módulo é prático e direto. Você pode aplicar as decisões conforme avança e começar a perceber mudanças antes mesmo de concluir a formação."],
@@ -65,8 +71,8 @@ export function NovaSalesPage() {
       <div className="hero-orbit orbit-one" aria-hidden="true"></div><div className="hero-orbit orbit-two" aria-hidden="true"></div>
       <div className="nova-container nova-hero-grid">
         <div className="nova-hero-copy" data-reveal="left">
-          <h1>Você não precisa escolher entre <em>viver bem</em> e ganhar bem da psicologia.</h1>
-          <p className="nova-lead">Um caminho para a psicóloga que já atende, mas ainda vive presa à jornada dupla. A agenda está cheia, a margem continua apertada e o consultório parece incapaz de funcionar sem a sua presença constante.</p>
+          <h1>Você pode <em>viver bem da clínica</em> e ser dona do seu próprio tempo.</h1>
+          <p className="nova-lead">Um caminho para construir uma clínica próspera, sustentável e que trabalhe a favor da vida que você deseja viver.</p>
           <Button href="#dor">Quero conhecer o Método Jardim</Button>
           <p className="nova-support">Uma formação para transformar vocação em uma carreira sustentável.</p>
         </div>
@@ -81,15 +87,19 @@ export function NovaSalesPage() {
     <section className="nova-section nova-pain" id="dor">
       <div className="nova-reading" data-reveal="up">
         <p className="nova-kicker">A raiz do problema</p>
-        <h2>A verdade que ninguém te conta sobre ter a agenda cheia.</h2>
+        <h2>A raiz do problema não é a sua agenda. É a forma como você aprendeu a crescer na clínica.</h2>
         <div className="nova-copy">
-          <p>A sua agenda pode estar lotada. E mesmo assim, você se pergunta: <strong>por que eu trabalho tanto e sinto que não avanço?</strong></p>
-          <p>Você atende o dia inteiro. Entre as sessões, responde mensagens. Depois do último paciente, ainda há prontuários para atualizar, planilhas para organizar e questões administrativas que ninguém te ensinou a resolver. Se você tem outra jornada, como um emprego, um estágio ou um segundo consultório, o dia só termina quando o corpo não aguenta mais.</p>
-          <p>E mesmo assim, a margem é estreita. O que entra cobre as contas, mas não cria respiro. Não cria liberdade. Não cria a sensação de que a clínica trabalha para você. Na prática, você trabalha para ela.</p>
-          <p>Existe culpa em querer mais. Culpa em desejar prosperidade, como se ganhar bem da psicologia fosse uma contradição com a vocação que você escolheu. Você já se perguntou se crescer significa necessariamente trabalhar ainda mais. Enquanto isso, férias, tempo com a família e um consultório que funcione sem a sua presença em cada detalhe parecem cenários distantes.</p>
-          <blockquote>O que você sente não é falta de capacidade. É falta de estrutura.</blockquote>
-          <p>Estrutura que ninguém te entregou na graduação. Estrutura que os cursos de formação clínica não incluem. Estrutura que separa as psicólogas que vivem da psicologia com sustentabilidade daquelas que, mesmo atendendo muito, seguem exaustas e sem respiro.</p>
-          <p className="nova-closing-line">Todo jardim precisa de estrutura para florescer. E o seu consultório também.</p>
+          <p>Na graduação, você aprendeu a ser psicóloga.</p>
+          <p>Aprendeu sobre técnica, ética, teoria e atendimento. Mas ninguém te ensinou a construir uma clínica que fosse, além de uma vocação, uma carreira próspera e sustentável.</p>
+          <p>E quando ninguém ensina outro caminho, crescer parece significar uma coisa: atender mais.</p>
+          <blockquote>Mais pacientes. Mais horários. Mais dias ocupados.</blockquote>
+          <p>O faturamento pode até aumentar, mas o seu tempo diminui. E, em algum momento, você percebe que criou uma carreira que depende inteiramente da sua presença para continuar funcionando.</p>
+          <p>É por isso que uma agenda cheia nem sempre significa uma clínica próspera.</p>
+          <p><strong>Prosperidade exige estrutura.</strong></p>
+          <p>Estrutura para entender seus números, precificar seu trabalho, organizar sua rotina, criar processos, tomar decisões estratégicas e fazer a clínica crescer sem precisar ocupar cada vez mais horas da sua vida.</p>
+          <p>Não falta capacidade.<br/>Não falta dedicação.<br/>E provavelmente não falta trabalho.</p>
+          <p>Falta aprender aquilo que ninguém te ensinou sobre viver bem da clínica.</p>
+          <p className="nova-closing-line">Todo jardim precisa de estrutura para florescer. E a sua clínica também.</p>
         </div>
       </div>
     </section>
@@ -126,9 +136,8 @@ export function NovaSalesPage() {
 
     <section className="nova-section nova-proof" id="provas">
       <div className="nova-container">
-        <div className="proof-heading" data-reveal="up"><p className="nova-kicker">Transformações reais</p><h2>Quem já aplicou o Método Jardim na própria clínica.</h2><p>Nenhum resultado foi simulado. Os depoimentos reais e autorizados serão inseridos neste espaço.</p></div>
-        <div className="proof-grid">{[1,2,3].map((item,index) => <article data-reveal={index === 0 ? "left" : index === 2 ? "right" : "up"} key={item}><span className="quote-mark">“</span><div className="skeleton-lines"><i></i><i></i><i></i></div><footer><b>Depoimento {item}</b><small>Conteúdo autorizado em preparação</small></footer></article>)}</div>
-        <div className="video-proof" data-reveal="up"><button aria-label="Espaço reservado para depoimento em vídeo">▶</button><div><b>Depoimento em vídeo</b><p>Espaço preparado para uma transformação concreta, com contexto.</p></div></div>
+        <div className="proof-heading" data-reveal="up"><p className="nova-kicker">Transformações reais</p><h2>Quem já está florescendo na própria trajetória profissional.</h2><p>Relatos reais de psicólogas que estão vivendo a experiência do Florescer na Clínica.</p></div>
+        <div className="proof-grid">{testimonials.map(([src,alt],index) => <figure data-reveal={index === 0 ? "left" : index === 2 ? "right" : "up"} key={src}><img src={src} alt={alt} loading="lazy"/><figcaption>Depoimento real de aluna do Florescer na Clínica</figcaption></figure>)}</div>
       </div>
     </section>
 
