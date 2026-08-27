@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
@@ -30,6 +30,26 @@ test("renders the complete Florescer sales journey", async () => {
   assert.match(html, /R\$ 797/);
   assert.match(html, /Perguntas frequentes/);
   assert.match(html, /Dê o próximo passo/);
+});
+
+test("renders the new static sales page with the confirmed offer", async () => {
+  const response = await render("/nova");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /A verdade que ninguém te conta sobre ter a agenda cheia/);
+  assert.match(html, /12x de/);
+  assert.match(html, /R\$ 82,43/);
+  assert.match(html, /Você tem 7 dias para conhecer a formação com tranquilidade/);
+  assert.match(html, /1 ano de acesso/);
+  assert.match(html, /https:\/\/pay\.kiwify\.com\.br\/iXQjQT1/);
+  assert.match(html, /nova-marquee/);
+  assert.match(html, /payment-methods/);
+  assert.match(html, /nova-guarantee-section/);
+  assert.match(html, /href="#dor"/);
+  assert.match(html, /href="#mentora"/);
+  assert.match(html, /href="#provas"/);
+  assert.doesNotMatch(html, /—/);
 });
 
 test("keeps pending facts explicit and avoids invented claims", async () => {
