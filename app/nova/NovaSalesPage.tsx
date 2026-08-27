@@ -35,6 +35,8 @@ const testimonials = [
   ["/depoimento-florescer-01.jpeg", "Depoimento de aluna sobre como o curso ajudou no desenvolvimento profissional"],
   ["/depoimento-florescer-02.jpeg", "Depoimento de aluna sobre os módulos e a continuidade da mentoria"],
   ["/depoimento-florescer-03.jpeg", "Depoimento de aluna sobre carreira, escolhas e posicionamento"],
+  ["/depoimento-florescer-04.jpeg", "Depoimento de aluna sobre a aplicação prática e os bastidores da psicologia clínica"],
+  ["/depoimento-florescer-05.jpeg", "Depoimento de Cristiane Pereira sobre acolhimento e direcionamento profissional"],
 ];
 
 const faqs = [
@@ -159,11 +161,9 @@ export function NovaSalesPage() {
 
     <section className="nova-section nova-offer" id="oferta">
       <div className="offer-rings" aria-hidden="true"></div>
-      <div className="nova-container"><div className="offer-heading" data-reveal="up"><p className="nova-kicker light">Tudo o que você recebe hoje</p><h2>Sua clínica pode sustentar o seu trabalho e a vida que você quer viver.</h2></div>
-        <div className="offer-content-grid">
-          <div className="offer-stack" data-reveal="left">{included.map(([item,description]) => <article key={item}><span>✓</span><div><h3>{item}</h3><p>{description}</p></div></article>)}</div>
-          <figure className="offer-mockup" data-reveal="right"><img src="/mockup-florescer-transparente.png" alt="Formação Florescer na Clínica disponível no computador, tablet e celular" loading="lazy"/></figure>
-        </div>
+      <div className="nova-container"><div className="offer-heading offer-heading-centered" data-reveal="up"><p className="nova-kicker light">Tudo o que você vai receber hoje!</p><h2>Sua clínica pode sustentar o seu trabalho e a vida que você quer viver!</h2></div>
+        <figure className="offer-mockup offer-mockup-wide" data-reveal="up"><img src="/mockup-florescer-transparente.png" alt="Formação Florescer na Clínica disponível no computador, tablet e celular" loading="lazy"/></figure>
+        <div className="offer-stack offer-stack-columns" data-reveal="up">{included.map(([item,description]) => <article key={item}><span>✓</span><div><h3>{item}</h3><p>{description}</p></div></article>)}</div>
         <aside className="checkout-card offer-checkout" data-reveal="up"><p>Florescer na Clínica</p><div className="offer-anchor"><span>Valor completo <s>R$ 797,00</s></span><strong>Condição especial de abertura</strong></div><div className="installment-label">12x de</div><div className="installment-price"><small>R$</small><strong>61</strong><sup>,74</sup></div><div className="cash-price">ou R$ 597,00 à vista</div><ul><li><span>✓</span>4 módulos fundamentais</li><li><span>✓</span>5 masterclasses bônus</li><li><span>✓</span>1 ano de acesso</li></ul><Button href={checkout} checkoutLink>Quero estruturar minha clínica agora</Button><small>Compra segura pela Kiwify</small><div className="payment-methods" role="img" aria-label="Meios de pagamento aceitos"></div></aside>
       </div>
     </section>
