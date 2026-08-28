@@ -66,6 +66,19 @@ test("renders the new static sales page with the confirmed offer", async () => {
   assert.doesNotMatch(html, /—/);
 });
 
+test("renders the post-purchase guidance without duplicating Purchase tracking", async () => {
+  const response = await render("/obrigada");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /Matrícula confirmada/);
+  assert.match(html, /Bem-vinda ao Florescer na Clínica/);
+  assert.match(html, /Confira seu e-mail/);
+  assert.match(html, /https:\/\/dashboard\.kiwify\.com\.br\/courses/);
+  assert.match(html, /index, nofollow/);
+  assert.doesNotMatch(html, /fbq\('track','Purchase'/);
+});
+
 test("keeps pending facts explicit and avoids invented claims", async () => {
   const response = await render();
   const html = await response.text();

@@ -19,43 +19,52 @@ const workerUrl = pathToFileURL(path.join(root, "dist", "server", "index.js"));
 workerUrl.searchParams.set("static-export", `${process.pid}-${Date.now()}`);
 const { default: worker } = await import(workerUrl.href);
 
-const response = await worker.fetch(
-  new Request(`${productionOrigin}/nova`, {
-    headers: { accept: "text/html", host: "www.beatrizjardim.com.br", "x-forwarded-host": "www.beatrizjardim.com.br", "x-forwarded-proto": "https" },
-  }),
-  { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-  { waitUntil() {}, passThroughOnException() {} },
-);
+async function renderRoute(route) {
+  const response = await worker.fetch(
+    new Request(`${productionOrigin}${route}`, {
+      headers: { accept: "text/html", host: "www.beatrizjardim.com.br", "x-forwarded-host": "www.beatrizjardim.com.br", "x-forwarded-proto": "https" },
+    }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
 
-assert.equal(response.status, 200, `A página retornou HTTP ${response.status}`);
-let html = await response.text();
-
-html = html
-  .replace(/<link\b[^>]*\brel=["']modulepreload["'][^>]*\/?\s*>/gi, "")
-  .replace(/<link\b(?=[^>]*\brel=["']preload["'])(?=[^>]*\bas=["']font["'])[^>]*\/?\s*>/gi, "")
-  .replace(/<img class="final-logo" src="\/florescer-logo-centralizado\.svg" alt="Florescer na Clínica"\/>/g, '<img class="final-logo" src="/florescer-logo-centralizado.svg" alt="Florescer na Clínica" width="1462" height="550" loading="lazy" decoding="async"/>')
-  .replace(/<img src="\/florescer-logo-centralizado\.svg" alt="Florescer na Clínica"\/>/g, '<img src="/florescer-logo-centralizado.svg" alt="Florescer na Clínica" width="1462" height="550" loading="lazy" decoding="async"/>')
-  .replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (script, attributes, body) => {
-    const isRuntime = /\btype=["']module["']/i.test(attributes) || /\bsrc=["']\/assets\/[^"']+\.js/i.test(attributes) || body.includes("__VINEXT_") || /import\(["']\/assets\//.test(body);
-    return isRuntime ? "" : script;
-  });
-
-const stylesheetPattern = /<link\b(?=[^>]*\brel=["']stylesheet["'])[^>]*\bhref=["']([^"']+\.css)["'][^>]*\/?\s*>/gi;
-for (const stylesheet of [...html.matchAll(stylesheetPattern)]) {
-  const href = stylesheet[1];
-  const css = (await readFile(path.join(clientDir, href.replace(/^\//, "")), "utf8")).replace(/<\/style/gi, "<\\/style");
-  html = html.replace(stylesheet[0], `<style data-inline-source="${href}">${css}</style>`);
+  assert.equal(response.status, 200, `A rota ${route} retornou HTTP ${response.status}`);
+  return response.text();
 }
 
-const behavior = `<script>
+async function prepareHtml(rawHtml, { includeBehavior = false } = {}) {
+  let prepared = rawHtml
+    .replace(/<link\b[^>]*\brel=["']modulepreload["'][^>]*\/?\s*>/gi, "")
+    .replace(/<link\b(?=[^>]*\brel=["']preload["'])(?=[^>]*\bas=["']font["'])[^>]*\/?\s*>/gi, "")
+    .replace(/<img class="final-logo" src="\/florescer-logo-centralizado\.svg" alt="Florescer na Clínica"\/>/g, '<img class="final-logo" src="/florescer-logo-centralizado.svg" alt="Florescer na Clínica" width="1462" height="550" loading="lazy" decoding="async"/>')
+    .replace(/<img src="\/florescer-logo-centralizado\.svg" alt="Florescer na Clínica"\/>/g, '<img src="/florescer-logo-centralizado.svg" alt="Florescer na Clínica" width="1462" height="550" loading="lazy" decoding="async"/>')
+    .replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (script, attributes, body) => {
+      const isRuntime = /\btype=["']module["']/i.test(attributes) || /\bsrc=["']\/assets\/[^"']+\.js/i.test(attributes) || body.includes("__VINEXT_") || /import\(["']\/assets\//.test(body);
+      return isRuntime ? "" : script;
+    });
+
+  const stylesheetPattern = /<link\b(?=[^>]*\brel=["']stylesheet["'])[^>]*\bhref=["']([^"']+\.css)["'][^>]*\/?\s*>/gi;
+  for (const stylesheet of [...prepared.matchAll(stylesheetPattern)]) {
+    const href = stylesheet[1];
+    const css = (await readFile(path.join(clientDir, href.replace(/^\//, "")), "utf8")).replace(/<\/style/gi, "<\\/style");
+    prepared = prepared.replace(stylesheet[0], `<style data-inline-source="${href}">${css}</style>`);
+  }
+
+  if (includeBehavior) {
+    const behavior = `<script>
 document.documentElement.style.scrollBehavior="smooth";
 const revealItems=document.querySelectorAll("[data-reveal]");
 if("IntersectionObserver" in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target);}}),{threshold:.12,rootMargin:"0px 0px -40px"});revealItems.forEach(item=>observer.observe(item));}else{revealItems.forEach(item=>item.classList.add("is-visible"));}
 </script>`;
-html = html.replace("</body>", `${behavior}</body>`);
-html = html
-  .replace(/((?:src|href)=)(["'])\/(?!\/)/g, `$1$2${coursePath}/`)
-  .replace(/url\((["']?)\/(?!\/)/g, `url($1${coursePath}/`);
+    prepared = prepared.replace("</body>", `${behavior}</body>`);
+  }
+
+  return prepared
+    .replace(/((?:src|href)=)(["'])\/(?!\/)/g, `$1$2${coursePath}/`)
+    .replace(/url\((["']?)\/(?!\/)/g, `url($1${coursePath}/`);
+}
+
+let html = await prepareHtml(await renderRoute("/nova"), { includeBehavior: true });
 
 for (const expected of ["Você pode <em>viver bem da clínica</em>", "Florescer na Clínica", "R$ 597,00 à vista", "Beatriz Jardim"]) {
   assert.ok(html.includes(expected), `Conteúdo ausente: ${expected}`);
@@ -63,6 +72,15 @@ for (const expected of ["Você pode <em>viver bem da clínica</em>", "Florescer 
 assert.doesNotMatch(html, /Site not found|codex-preview|__VINEXT_|modulepreload/i);
 
 await writeFile(path.join(courseDir, "index.html"), html, "utf8");
+
+const thanksDir = path.join(courseDir, "obrigada");
+await mkdir(thanksDir, { recursive: true });
+const thanksHtml = await prepareHtml(await renderRoute("/obrigada"));
+for (const expected of ["Matrícula confirmada", "Bem-vinda ao Florescer na Clínica", "dashboard.kiwify.com.br/courses"]) {
+  assert.ok(thanksHtml.includes(expected), `Conteúdo ausente na página de obrigado: ${expected}`);
+}
+assert.doesNotMatch(thanksHtml, /fbq\(['"]track['"],\s*['"]Purchase['"]/i);
+await writeFile(path.join(thanksDir, "index.html"), thanksHtml, "utf8");
 
 await writeFile(path.join(courseDir, ".htaccess"), `DirectoryIndex index.html
 Options -Indexes
@@ -102,9 +120,10 @@ Options -Indexes
 </IfModule>
 `, "utf8");
 
-const references = new Set([...html.matchAll(/(?:src|href)=["'](\/(?!\/|#)[^"'#?]+)[^"']*["']/g)].map((match) => match[1]));
+const references = new Set([...`${html}\n${thanksHtml}`.matchAll(/(?:src|href)=["'](\/(?!\/|#)[^"'#?]+)[^"']*["']/g)].map((match) => match[1]));
 for (const reference of references) await access(path.join(deployDir, reference.replace(/^\//, "")));
 
 console.log(`Exportação estática concluída: ${deployDir}`);
 console.log(`Página do curso: ${productionOrigin}${coursePath}`);
+console.log(`Página de obrigado: ${productionOrigin}${coursePath}/obrigada/`);
 console.log(`Arquivos locais validados: ${references.size}`);
